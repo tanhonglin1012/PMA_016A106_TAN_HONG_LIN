@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `luther091012070425`
+-- Database: `thl091012070425`
 --
 
 -- --------------------------------------------------------
@@ -93,7 +93,7 @@ CREATE TABLE `pengundi` (
   `nama` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
+--'''''''''''''''
 -- Dumping data for table `pengundi`
 --
 
