@@ -102,9 +102,9 @@ $calonResult = mysqli_query($con, "SELECT * FROM calon ORDER BY idCalon ASC");
                         <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($r['noKP']) ?></td>
                         <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($r['nama']) ?></td>
                 <?php   endif; ?>
-                        <td><?= $r['namacalon'] ?? '<span class="text-danger">-</span>' ?></td>
-                        <td><?= $r['namaKategori'] ?? '-' ?></td>
-                        <td><?= $r['Masa'] ?? '-' ?></td>
+                        <td><?= isset($r['namacalon']) ? $r['namacalon'] : '<span class="text-danger">-</span>' ?></td>
+                        <td><?= isset($r['namaKategori']) ? $r['namaKategori'] : '-' ?></td>
+                        <td><?= isset($r['Masa']) ? $r['Masa'] : '-' ?></td>
                 <?php   if ($first): ?>
                         <?php //Borang kemas kini nama pengundi. ?>
                         <td rowspan="<?= $rowspan ?>">

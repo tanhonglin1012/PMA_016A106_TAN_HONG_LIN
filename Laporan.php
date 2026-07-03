@@ -101,10 +101,10 @@ if (!isset($_SESSION['noKP']) || $_SESSION['noKP'] !== 'admin') {
                         echo "<tr>";
                         echo "<td>" . $no . "</td>";
                         //Gunakan tanda sempang jika nilai pangkalan data kosong.
-                        echo "<td>" . ($row['Masa'] ?? '-') . "</td>";
-                        echo "<td>" . ($row['Nama_Pengundi'] ?? '-') . "</td>";
-                        echo "<td>" . ($row['Kategori'] ?? '-') . "</td>";
-                        echo "<td>" . ($row['Nama_Calon'] ?? '-') . "</td>";
+                        echo "<td>" . (isset($row['Masa']) ? $row['Masa'] : '-') . "</td>";
+                        echo "<td>" . (isset($row['Nama_Pengundi']) ? $row['Nama_Pengundi'] : '-') . "</td>";
+                        echo "<td>" . (isset($row['Kategori']) ? $row['Kategori'] : '-') . "</td>";
+                        echo "<td>" . (isset($row['Nama_Calon']) ? $row['Nama_Calon'] : '-') . "</td>";
                         echo "</tr>";
                         $no++;
                     }
