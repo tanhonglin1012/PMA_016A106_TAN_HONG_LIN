@@ -11,5 +11,5 @@
     }
 
     //Pilih pangkalan data yang digunakan oleh sistem.
-    mysqli_select_db($con,"luther091012070425");
+    mysqli_select_db($con,"thl091012070425");
 ?>
