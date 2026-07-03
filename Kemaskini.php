@@ -76,38 +76,45 @@ $calonResult = mysqli_query($con, "SELECT * FROM calon ORDER BY idCalon ASC");
 
             <?php //Bahagian senarai pengundi untuk kemas kini dan padam. ?>
             <h2>Panel Kemas Kini & Padam Pengundi</h2>
-            <table>
+            <table class="pengundi-update-table">
                 <tr>
                     <th>No KP</th>
                     <th>Nama Pengundi</th>
-                    <th>Calon Dipilih</th>
-                    <th>Kategori</th>
-                    <th>Masa Mengundi</th>
+                    <th>Rekod Undian</th>
                     <th>Kemas Kini Nama</th>
                     <th>Padam</th>
                 </tr>
                 <?php
-                //Kumpul baris mengikut noKP supaya nama pengundi dipaparkan sekali.
+                //Kumpul baris mengikut noKP supaya setiap pengundi dipaparkan sebagai satu kad baris.
                 $rows = [];
                 while ($row = mysqli_fetch_assoc($result)) {
                     $rows[$row['noKP']][] = $row;
                 }
                 foreach ($rows as $noKP => $data):
-                    $rowspan = count($data);
-                    $first = true;
-                    foreach ($data as $r):
-                        echo "<tr>";
-                        if ($first):
+                    $r = $data[0];
                 ?>
-                        <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($r['noKP']) ?></td>
-                        <td rowspan="<?= $rowspan ?>"><?= htmlspecialchars($r['nama']) ?></td>
-                <?php   endif; ?>
-                        <td><?= isset($r['namacalon']) ? $r['namacalon'] : '<span class="text-danger">-</span>' ?></td>
-                        <td><?= isset($r['namaKategori']) ? $r['namaKategori'] : '-' ?></td>
-                        <td><?= isset($r['Masa']) ? $r['Masa'] : '-' ?></td>
-                <?php   if ($first): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($r['noKP']) ?></td>
+                        <td><?= htmlspecialchars($r['nama']) ?></td>
+                        <td>
+                            <div class="vote-record-list">
+                                <?php foreach ($data as $vote): ?>
+                                    <?php if (isset($vote['namacalon'])): ?>
+                                        <div class="vote-record-item">
+                                            <span><?= htmlspecialchars($vote['namacalon']) ?></span>
+                                            <span><?= htmlspecialchars($vote['namaKategori'] ?? '-') ?></span>
+                                            <span><?= htmlspecialchars($vote['Masa'] ?? '-') ?></span>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="vote-record-item is-empty">
+                                            <span>Belum Mengundi</span>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                        </td>
                         <?php //Borang kemas kini nama pengundi. ?>
-                        <td rowspan="<?= $rowspan ?>">
+                        <td>
                             <form method="POST" class="inline-edit-form">
                                 <input type="hidden" name="noKP" value="<?= htmlspecialchars($noKP) ?>">
                                 <input type="text" name="nama" value="<?= htmlspecialchars($r['nama']) ?>" class="input-kemaskini" required>
@@ -115,15 +122,13 @@ $calonResult = mysqli_query($con, "SELECT * FROM calon ORDER BY idCalon ASC");
                             </form>
                         </td>
                         <?php //Butang untuk memadam pengundi. ?>
-                        <td rowspan="<?= $rowspan ?>">
+                        <td>
                             <a href="Kemaskini.php?delete_noKP=<?= urlencode($noKP) ?>"
                                onclick="return confirm('Padam pengundi ini? Semua rekod undiannya turut dipadam.');"
                                class="btn-logkeluar">Padam</a>
                         </td>
-                <?php   endif;$first = false;
-                        echo "</tr>";
-                    endforeach;
-                endforeach; ?>
+                    </tr>
+                <?php endforeach; ?>
             </table>
 
             <?php //Bahagian kemas kini nama calon. ?>

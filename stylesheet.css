@@ -773,6 +773,88 @@ button:active,
     margin: 0;
 }
 
+.pengundi-update-table {
+    table-layout: fixed;
+}
+
+.pengundi-update-table th:nth-child(1),
+.pengundi-update-table td:nth-child(1) {
+    width: 15%;
+}
+
+.pengundi-update-table th:nth-child(2),
+.pengundi-update-table td:nth-child(2) {
+    width: 14%;
+}
+
+.pengundi-update-table th:nth-child(3),
+.pengundi-update-table td:nth-child(3) {
+    width: 36%;
+}
+
+.pengundi-update-table th:nth-child(4),
+.pengundi-update-table td:nth-child(4) {
+    width: 25%;
+}
+
+.pengundi-update-table th:nth-child(5),
+.pengundi-update-table td:nth-child(5) {
+    width: 10%;
+}
+
+.pengundi-update-table td {
+    padding: 12px 14px;
+}
+
+.pengundi-update-table .inline-edit-form {
+    justify-content: flex-start;
+}
+
+.pengundi-update-table .input-kemaskini {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.pengundi-update-table .btn-simpan,
+.pengundi-update-table .btn-logkeluar {
+    min-width: 86px;
+    padding: 12px 16px !important;
+    white-space: nowrap;
+}
+
+.pengundi-update-table td:nth-child(5) {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.vote-record-list {
+    display: grid;
+    gap: 8px;
+}
+
+.vote-record-item {
+    display: grid;
+    grid-template-columns: minmax(82px, 1fr) minmax(112px, 1fr) 82px;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--text-soft);
+    gap: 10px;
+}
+
+.vote-record-item span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.vote-record-item.is-empty {
+    grid-template-columns: 1fr;
+    color: var(--text-muted);
+}
+
 .nav-buttons {
     justify-content: flex-end;
 }
