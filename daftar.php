@@ -36,7 +36,7 @@ if(isset($_POST['daftar'])){
     }
   
     //Simpan akaun log masuk baharu ke dalam jadual pengguna.
-    $sql_pengguna = "INSERT INTO pengguna (namaPengguna, katalaluan) VALUES ('$idPengguna', '$kataLaluan')";
+    $sql_pengguna = "INSERT INTO pengguna (namaPengguna, kataLaluan) VALUES ('$idPengguna', '$kataLaluan')";
   
     //Simpan maklumat pengundi baharu ke dalam jadual pengundi.
     $sql_pengundi = "INSERT INTO pengundi (noKP, nama) VALUES ('$idPengguna', '$namaPenuh')";
